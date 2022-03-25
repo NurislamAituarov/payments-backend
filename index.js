@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const routes = require('./routes/route');
+require('dotenv').config();
 
 const PORT = process.env.PORT || 5000;
 
@@ -11,9 +12,7 @@ app.use(routes);
 
 async function start(req, res, next) {
   try {
-    await mongoose.connect(
-      'mongodb+srv://Nurislam:2016Granta@cluster0.p2scd.mongodb.net/myFirstDatabase',
-    );
+    await mongoose.connect(process.env.MONGO_URL);
 
     app.listen(PORT, () => {
       console.log('listening on port' + PORT);

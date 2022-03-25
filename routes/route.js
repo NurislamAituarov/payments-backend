@@ -8,7 +8,6 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/payments', async (req, res) => {
-  console.log(req.body);
   const payment = new Payments({
     CardNumber: req.body.CardNumber,
     ExpDate: req.body.ExpDate,
